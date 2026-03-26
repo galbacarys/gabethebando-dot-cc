@@ -1,5 +1,4 @@
 from threading import Thread
-from utils.onlyone import only_one
 from time import sleep
 from blog import Blog
 
