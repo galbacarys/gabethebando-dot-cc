@@ -12,4 +12,4 @@ RUN uv sync --locked --no-dev
 
 COPY . .
 
-CMD [ "uv", "run", "gunicorn", "-w", "4",  "app:proxy_app"]
+CMD [ "uv", "run", "gunicorn", "--bind", "0.0.0.0", "-w", "4",  "app:proxy_app"]
