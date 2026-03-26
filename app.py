@@ -5,11 +5,10 @@ from blog import Blog
 from flask import Flask, render_template
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-app = Flask(__name__)
-proxy_app = ProxyFix(app, x_for=1, x_host=1)
-
 blog = Blog()
 
+app = Flask(__name__)
+proxy_app = ProxyFix(app, x_for=1, x_host=1)
 
 @app.route("/")
 def homepage():

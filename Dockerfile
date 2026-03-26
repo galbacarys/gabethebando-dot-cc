@@ -3,6 +3,11 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y curl build-essential && rm -rf /var/lib/apt/lists/*
 RUN curl -sSL https://astral.sh/uv/install.sh | sh
+
+RUN curl -o litestream.deb -sSL https://github.com/benbjohnson/litestream/releases/download/v0.5.8/litestream-0.5.8-linux-x86_64.deb
+
+RUN dpkg -i litestream.deb && rm litestream.deb
+
 ENV PATH="/root/.local/bin:$PATH"
 
 COPY pyproject.toml uv.lock ./
