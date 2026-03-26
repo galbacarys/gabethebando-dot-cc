@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "casefy>=1.1.0",
+    "filelock>=3.25.2",
     "flask>=3.1.3",
     "gunicorn>=25.2.0",
     "markdown>=3.10.2",
