@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block pagetitle %}{{ page.title }}{% endblock %}
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+
+{{ page.html_content | safe }}
+
+{% endblock %}
