@@ -12,15 +12,24 @@
 	<body>
 		<div class="container">
 			<h1>The Blog of The Bando</h1>
+			<div>
+				<a href="/">Home</a> |
+				<a href="{{url_for('archive')}}">Archive</a> |
+				{% for page in pages.get_pages() %}
+				<a href="{{ url_for('page', slug=page.slug()) }}">{{ page.title }}</a>
+				{% if not loop.last %} | {% endif %}
+				{% endfor %}
+			</div>
 			<h2>{% block title %}{% endblock %}</h2>
 			<main>{% block content %}{% endblock %}</main>
 			<footer>
 				<div>
-					<a href="/">Home</a> |
-					{% for page in pages.get_pages() %}
-					{% if not loop.last %} | {% endif %}
-					<a href="{{ url_for('page', slug=page.slug()) }}">{{ page.title }}</a>
-					{% endfor %}
+					<!--TODO(bando): Update these when I get a site number assigned -->
+					<a href="https://hotlinewebring.club/gabethebando/previous">&lt;</a>
+					::
+					<a href="https://hotlinewebring.club">Hotline Webring</a>
+					::
+					<a href="https://hotlinewebring.club/gabethebando/next">&gt;</a>
 				</div>
 			</footer>
 		</div>

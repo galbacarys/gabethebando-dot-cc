@@ -33,6 +33,10 @@ def post(slug):
         raise NotFound()
     return render_template("post.html", post=post)
 
+@app.route("/post/archive")
+def archive():
+    return render_template("archive.html")
+
 @app.route("/page/<string:slug>")
 def page(slug):
     page = pages.get_page(slug)

@@ -1,6 +1,4 @@
-from pony import orm
-
-from . import db
+from . import db, orm
 
 
 class Post(db.Entity):
@@ -11,5 +9,3 @@ class Comment(db.Entity):
     post = orm.Required(Post)
     user = orm.Required(str)
     body = orm.Required(str)
-
-

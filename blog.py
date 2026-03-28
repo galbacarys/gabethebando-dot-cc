@@ -24,7 +24,7 @@ class Blog:
                 title = str(metadata["title"])
                 date = parse_date(metadata["date"])
                 content = post.content
-                html_content = markdown(content, extensions=["fenced_code", "tables"])
+                html_content = markdown(content, extensions=["fenced_code", "tables", "footnotes"])
                 new_post = BlogPost(
                     title=title, date=date, content=content, html_content=html_content
                 )

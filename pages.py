@@ -21,10 +21,11 @@ class Pages:
                 if not is_metadata_valid(metadata):
                     continue
                 title = str(metadata["title"])
+                titlebar = bool(metadata.get("titlebar", False))
                 content = post.content
                 html_content = markdown(content, extensions=["fenced_code", "tables"])
                 new_page = Page(
-                    title=title, content=content, html_content=html_content
+                    title=title, titlebar=titlebar, content=content, html_content=html_content
                 )
                 self.pages[new_page.slug()] = new_page
                 print(f"Processed post '{title}'")
@@ -34,13 +35,19 @@ class Pages:
             return self.pages[slug]
         return None
 
-    def get_pages(self):
-        return [page for _, page in self.pages.items()]
+    def get_pages(self, all=False):
+        """
+        Get all pages, excluding ones hidden from the titlebar, unless all is set to true
+        """
+        result = [page for _, page in self.pages.items()]
+        if not all:
+            return [page for page in result if page.titlebar]
 
 
 @dataclass
 class Page:
     title: str
+    titlebar: bool
     content: str
     html_content: str
 

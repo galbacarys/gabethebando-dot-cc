@@ -6,3 +6,10 @@ body {
 	max-width: 800px;
 	width: 90%;
 }
+
+img {
+	width: 70%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
