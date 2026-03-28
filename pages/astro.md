@@ -178,14 +178,14 @@ astrophotography.
 ---
 
 [^1]: It's actually even slightly more annoying than this; for astronomy what
-    we care about _Sidereal time_, which is the amount of time it takes for the
-    Earth to rotate in place back to the same position relative to the stars.
-    Since the Earth is rotating _both_ around its own axis and around the sun,
-    a Sidereal day is actually 23 hours, 56 minutes, and 4.1 seconds. This is
-    way too complicated to use for the math in this post, so we're going to
-    pretend we aren't dealing with Earth's orbit.
+      we care about _Sidereal time_, which is the amount of time it takes for the
+      Earth to rotate in place back to the same position relative to the stars.
+      Since the Earth is rotating _both_ around its own axis and around the sun,
+      a Sidereal day is actually 23 hours, 56 minutes, and 4.1 seconds. This is
+      way too complicated to use for the math in this post, so we're going to
+      pretend we aren't dealing with Earth's orbit.
 
 [^2]: This coordinate system is complex enough that I don't particularly feel
-    like explaining it here. If you want more detail, This [Sky And
-    Telescope](https://skyandtelescope.org/astronomy-resources/right-ascension-declination-celestial-coordinates/)
+      like explaining it here. If you want more detail, This [Sky And
+      Telescope](https://skyandtelescope.org/astronomy-resources/right-ascension-declination-celestial-coordinates/)
     article is a pretty good resource for understanding it.

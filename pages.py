@@ -23,7 +23,7 @@ class Pages:
                 title = str(metadata["title"])
                 titlebar = bool(metadata.get("titlebar", False))
                 content = post.content
-                html_content = markdown(content, extensions=["fenced_code", "tables"])
+                html_content = markdown(content, extensions=["fenced_code", "tables", "footnotes"])
                 new_page = Page(
                     title=title, titlebar=titlebar, content=content, html_content=html_content
                 )
