@@ -49,4 +49,4 @@ def page(slug):
 def static_fallback(path):
     # Just return a file within static. send_from_directory handles
     # traversal attacks.
-    send_from_directory("./static/", path)
+    return send_from_directory("./static/", path)

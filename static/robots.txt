@@ -1,0 +1,26 @@
+# OpenAI
+User-agent: GPTBot
+Disallow: /
+
+# Common Crawl
+User-agent: CCBot
+Disallow: /
+
+# Gemini
+User-agent: Google-Extended
+Disallow: /
+
+# Anthropic
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /
+
+# Randos
+User-agent: Bytespider
+User-agent: AwarioBot
+User-agent: Ai2Bot
+Disallow: /
