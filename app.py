@@ -4,7 +4,7 @@ from threading import Thread
 from time import sleep
 from blog import Blog
 
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 blog = Blog()
@@ -13,12 +13,10 @@ pages = Pages()
 app = Flask(__name__)
 proxy_app = ProxyFix(app, x_for=1, x_host=1)
 
+
 @app.context_processor
 def inject_globals():
-    return {
-        'blog': blog,
-        'pages': pages
-    }
+    return {"blog": blog, "pages": pages}
 
 
 @app.route("/")
@@ -33,9 +31,11 @@ def post(slug):
         raise NotFound()
     return render_template("post.html", post=post)
 
+
 @app.route("/post/archive")
 def archive():
     return render_template("archive.html")
+
 
 @app.route("/page/<string:slug>")
 def page(slug):
@@ -43,3 +43,10 @@ def page(slug):
     if not page:
         raise NotFound()
     return render_template("page.html", page=page)
+
+
+@app.route("/<path:path>")
+def static_fallback(path):
+    # Just return a file within static. send_from_directory handles
+    # traversal attacks.
+    send_from_directory("./static/", path)

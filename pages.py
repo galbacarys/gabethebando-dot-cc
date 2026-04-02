@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import sys
 
+
 class Pages:
     def __init__(self):
         self.pages = {}
@@ -23,9 +24,14 @@ class Pages:
                 title = str(metadata["title"])
                 titlebar = bool(metadata.get("titlebar", False))
                 content = post.content
-                html_content = markdown(content, extensions=["fenced_code", "tables", "footnotes"])
+                html_content = markdown(
+                    content, extensions=["fenced_code", "tables", "footnotes"]
+                )
                 new_page = Page(
-                    title=title, titlebar=titlebar, content=content, html_content=html_content
+                    title=title,
+                    titlebar=titlebar,
+                    content=content,
+                    html_content=html_content,
                 )
                 self.pages[new_page.slug()] = new_page
                 print(f"Processed post '{title}'")
