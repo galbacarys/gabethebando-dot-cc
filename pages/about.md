@@ -13,4 +13,4 @@ I want to believe in the small web renaissance, so I'm here, writing in my own
 little corner of the internet, hoping someone will see someday. But also
 trying to accept that making art for its own sake is...good. And valuable.
 
-Wanna talk? Email me at gabethebando &lt;at&gt; protonmail &lt;dot&gt; me.
+Wanna talk? Email me at gabethebando &lt;at&gt; proton &lt;dot&gt; me.
