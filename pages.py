@@ -23,6 +23,7 @@ class Pages:
                     continue
                 title = str(metadata["title"])
                 titlebar = bool(metadata.get("titlebar", False))
+                slug_override = str(metadata.get("slug_override", ""))
                 content = post.content
                 html_content = markdown(
                     content, extensions=["fenced_code", "tables", "footnotes"]
@@ -30,6 +31,7 @@ class Pages:
                 new_page = Page(
                     title=title,
                     titlebar=titlebar,
+                    slug_override=slug_override,
                     content=content,
                     html_content=html_content,
                 )
@@ -54,10 +56,13 @@ class Pages:
 class Page:
     title: str
     titlebar: bool
+    slug_override: str
     content: str
     html_content: str
 
     def slug(self):
+        if self.slug_override != "":
+            return self.slug_override
         return make_slug(self.title)
 
 
