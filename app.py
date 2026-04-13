@@ -1,11 +1,13 @@
 from werkzeug.exceptions import NotFound
 from pages import Pages
-from threading import Thread
-from time import sleep
 from blog import Blog
+from models import counter, post_init
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
 from werkzeug.middleware.proxy_fix import ProxyFix
+
+from time import sleep
+from threading import Thread
 
 blog = Blog()
 pages = Pages()
@@ -13,10 +15,23 @@ pages = Pages()
 app = Flask(__name__)
 proxy_app = ProxyFix(app, x_for=1, x_host=1)
 
+# Initialize all the models
+post_init()
+
 
 @app.context_processor
 def inject_globals():
-    return {"blog": blog, "pages": pages}
+    return {
+        "blog": blog,
+        "pages": pages,
+        "view_count": counter.get_counter(request.path),
+    }
+
+
+@app.before_request
+def counters():
+    url = request.path
+    counter.inc_counter(url)
 
 
 @app.route("/")
