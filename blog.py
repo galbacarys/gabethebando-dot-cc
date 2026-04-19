@@ -23,23 +23,24 @@ class Blog:
                     continue
                 title = str(metadata["title"])
                 date = parse_date(metadata["date"])
+                draft = bool(metadata.get("draft", False))
                 content = post.content
                 html_content = markdown(
                     content, extensions=["fenced_code", "tables", "footnotes"]
                 )
                 new_post = BlogPost(
-                    title=title, date=date, content=content, html_content=html_content
+                    title=title, date=date, draft=draft, content=content, html_content=html_content
                 )
                 self.posts[new_post.slug()] = new_post
                 print(f"Processed post '{title}'")
 
     def get_post(self, slug):
-        if slug in self.posts:
+        if slug in self.posts and not self.posts[slug].draft:
             return self.posts[slug]
         return None
 
     def get_posts(self, lim=10):
-        posts = [post for _, post in self.posts.items()]
+        posts = [post for _, post in self.posts.items() if not post.draft]
         return sorted(posts, key=lambda post: post.date, reverse=True)[:lim]
 
 
@@ -47,6 +48,7 @@ class Blog:
 class BlogPost:
     title: str
     date: datetime
+    draft: bool
     content: str
     html_content: str
 
