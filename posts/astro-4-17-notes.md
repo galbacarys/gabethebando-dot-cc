@@ -169,7 +169,7 @@ So here's what I learned _reading the fucking firmware code_ the next day:
   instead of moving 90% of the distance, they moved ~180% of the distance, or 90% of the way to
   the other side, ending up only 10% closer instead of 90% closer.
 
-#[AutoPA in action...sort of](https://gabethebando-assets.nyc3.cdn.digitaloceanspaces.com/003-polar-align.jpg)
+![AutoPA in action...sort of](https://gabethebando-assets.nyc3.cdn.digitaloceanspaces.com/003-polar-align.jpg)
 
 So...AutoPA _did_ work. But it took so long that I could have done it myself faster. This was
 a huge disappointment.
@@ -178,7 +178,7 @@ a huge disappointment.
 
 ...literally.
 
-#[Shit's broke](https://gabethebando-assets.nyc3.cdn.digitaloceanspaces.com/004-broken.jpg)
+![Shit's broke](https://gabethebando-assets.nyc3.cdn.digitaloceanspaces.com/004-broken.jpg)
 
 That's a loose bolt.
 
