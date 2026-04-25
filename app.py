@@ -1,3 +1,5 @@
+import os
+from guestbook import guestbook_bp
 from werkzeug.exceptions import NotFound
 from pages import Pages
 from blog import Blog
@@ -14,6 +16,11 @@ pages = Pages()
 
 app = Flask(__name__)
 proxy_app = ProxyFix(app, x_for=1, x_host=1)
+
+# CSRF configuration
+app.config['SECRET_KEY'] = os.urandom(24)
+
+app.register_blueprint(guestbook_bp, url_prefix='/guestbook')
 
 # Initialize all the models
 post_init()

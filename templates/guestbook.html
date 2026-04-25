@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pagetitle %}Guestbook{% endblock %}
+
+{% block content %}
+<h2>Guestbook</h2>
+
+<p>
+Write a thing! Say hi! Feel free to advertise yourself if you aren't a robot.
+Just FYI, all posts must be manually approved by a human (me) so if you don't
+see your post up right away that's why.
+</p>
+
+<form method="POST" action="/guestbook/">
+	{{ form.csrf_token }}
+	{{ form.poster.label }}<br>
+	{{ form.poster(size=36) }}<br>
+	{{ form.post.label }}<br>
+	{{ form.post(rows=5, cols=40) }}<br>
+	<input type="submit" value="Submit">
+</form>
+
+{% for post in posts | sort(attribute="post_time", reverse=True) %}
+<p>
+	<b>{{ post.poster }}</b> said: {{ post.post }}
+</p>
+{% endfor %}
+<p>
+{% if page > 1 %}
+<a href={{url_for('guestbook_bp.index') + "?page=" + (page - 1) }}>Prev</a>
+{% endif %}
+::
+{% if has_more_pages %}
+<a href={{url_for('guestbook_bp.index') + "?page=" + (page + 1) }}>Next</a>
+{% endif %}
+{% endblock %}

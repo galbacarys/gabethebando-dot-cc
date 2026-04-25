@@ -15,6 +15,7 @@
 			<div>
 				<a href="/">Home</a> |
 				<a href="{{url_for('archive')}}">Archive</a> |
+				<a href="{{url_for('guestbook_bp.index')}}">Guestbook</a> |
 				{% for page in pages.get_pages() %}
 				<a href="{{ url_for('page', slug=page.slug()) }}">{{ page.title }}</a>
 				{% if not loop.last %} | {% endif %}
