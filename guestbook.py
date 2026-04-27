@@ -16,6 +16,7 @@ class GuestbookForm(FlaskForm):
     post = TextAreaField('post', validators=[DataRequired(), Length(min=10, max=200)])
 
 @guestbook_bp.route('/approve/<int:post_id>')
+@db_session
 def approve_post(post_id):
     post = GuestbookEntry.get(id=post_id)
     proposed_nonce = request.args.get('q', default=None)
@@ -34,7 +35,7 @@ def email_post_approval_request(guestbook_post):
     Post: {guestbook_post.post}
 
     To approve, click here: {
-        "https://gabethebando.cc " + url_for('guestbook_bp.approve_post', post_id=guestbook_post.id, external=True) + "?q=" + guestbook_post.post_approval_nonce
+        "https://gabethebando.cc" + url_for('guestbook_bp.approve_post', post_id=guestbook_post.id) + "?q=" + guestbook_post.post_approval_nonce
     }
     """
     if os.getenv('TEST') is not None:
