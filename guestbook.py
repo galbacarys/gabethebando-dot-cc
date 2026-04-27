@@ -22,6 +22,7 @@ def approve_post(post_id):
     proposed_nonce = request.args.get('q', default=None)
     if proposed_nonce:
         post.approve_post(proposed_nonce)
+    return "ok"
 
 
 def email_post_approval_request(guestbook_post):
