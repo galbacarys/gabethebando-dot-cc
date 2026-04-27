@@ -18,7 +18,8 @@ app = Flask(__name__)
 proxy_app = ProxyFix(app, x_for=1, x_host=1)
 
 # CSRF configuration
-app.config['SECRET_KEY'] = os.urandom(24)
+with open('/tmp/ephemeral-app-secret', 'r') as f:
+    app.config['SECRET_KEY'] = f.read()
 
 app.register_blueprint(guestbook_bp, url_prefix='/guestbook')
 

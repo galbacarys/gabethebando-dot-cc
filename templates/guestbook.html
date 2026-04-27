@@ -11,8 +11,8 @@ Just FYI, all posts must be manually approved by a human (me) so if you don't
 see your post up right away that's why.
 </p>
 
-<form method="POST" action="/guestbook/">
-	{{ form.csrf_token }}
+<form method="POST" action="{{ url_for('guestbook_bp.index') }}">
+	{{ form.hidden_tag() }}
 	{{ form.poster.label }}<br>
 	{{ form.poster(size=36) }}<br>
 	{{ form.post.label }}<br>
@@ -20,17 +20,23 @@ see your post up right away that's why.
 	<input type="submit" value="Submit">
 </form>
 
+{% if form_errors %}
+{{form_errors}}
+{% endif %}
+
+<hr>
+
 {% for post in posts | sort(attribute="post_time", reverse=True) %}
 <p>
-	<b>{{ post.poster }}</b> said: {{ post.post }}
+	At {{ post.post_time.isoformat() }}, <b>{{ post.poster }}</b> said: {{ post.post }}
 </p>
 {% endfor %}
 <p>
 {% if page > 1 %}
-<a href={{url_for('guestbook_bp.index') + "?page=" + (page - 1) }}>Prev</a>
+<a href={{url_for('guestbook_bp.index') ~ "?page=" ~ (page - 1)|string }}>Prev</a>
 {% endif %}
 ::
 {% if has_more_pages %}
-<a href={{url_for('guestbook_bp.index') + "?page=" + (page + 1) }}>Next</a>
+<a href={{url_for('guestbook_bp.index') ~ "?page=" ~ (page + 1)|string }}>Next</a>
 {% endif %}
 {% endblock %}

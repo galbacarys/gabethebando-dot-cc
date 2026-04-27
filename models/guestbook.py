@@ -1,4 +1,3 @@
-from logging import warning
 from pony.orm import db_session
 from datetime import datetime
 from secrets import token_hex
@@ -24,4 +23,4 @@ class GuestbookEntry(db.Entity):
         if self.post_approval_nonce == proposed_nonce:
             self.post_approved = True
         else:
-            warning(f"Invalid nonce provided for post: {self.id}")
+            print(f"WARNING: Invalid nonce provided for post: {self.id}")

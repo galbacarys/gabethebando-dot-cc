@@ -1,9 +1,7 @@
-import logging
-from logging import log
 from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired, Length
 from flask_wtf import FlaskForm
-from pony.orm import desc, db_session
+from pony.orm import desc, db_session, commit as orm_commit
 from models.guestbook import GuestbookEntry
 from flask import Blueprint, request, render_template, redirect, url_for
 import os
@@ -36,20 +34,29 @@ def email_post_approval_request(guestbook_post):
     Post: {guestbook_post.post}
 
     To approve, click here: {
-        url_for('guestbook_bp.approve_post', id=guestbook_post.id, external=True) + "?q=" + guestbook_post.approval_nonce
+        "https://gabethebando.cc " + url_for('guestbook_bp.approve_post', post_id=guestbook_post.id, external=True) + "?q=" + guestbook_post.post_approval_nonce
     }
     """
-    logging.info('Sending message for approval')
+    if os.getenv('TEST') is not None:
+        print("Email sending disabled in test mode; automatically approving")
+        with db_session:
+            guestbook_post.post_approved = True
+        return
     
-    return requests.post(
+    req = requests.post(
       	endpoint,
       	auth=("api", api_key),
       	data={"from": "Mailgun Sandbox <postmaster@sandboxa4fca2b749404604ba1808ee8534dd27.mailgun.org>",
-    		"to": "Gabe Albacarys <gabethebando@proton.me>",
+    		"to": "Gabe The Bando <gabethebando@proton.me>",
       		"subject": "New guestbook post to approve",
              "text": text
              }
         )
+    if not req.ok:
+        # delete the post and raise an exception
+        with db_session:
+            guestbook_post.delete()
+        raise Exception("Could not reach mailgun!")
 
 
 @guestbook_bp.route('/', methods=['GET','POST'])
@@ -57,20 +64,23 @@ def email_post_approval_request(guestbook_post):
 def index():
     form = GuestbookForm()
     if form.validate_on_submit():
-        print("asdf")
         poster = form.poster.data
         post = form.post.data
         new_guestbook_post = GuestbookEntry(poster=poster, post=post)
+        orm_commit()
         email_post_approval_request(new_guestbook_post)
         return redirect(url_for('guestbook_bp.index'))
-    page = request.args.get('page', default=1)
-    posts = GuestbookEntry.select().order_by(desc(GuestbookEntry.post_time)).page(page, pagesize=25)
+    form_errors = form.errors
+    page = int(request.args.get('page', default=1))
+    posts = GuestbookEntry.select(post_approved=True).order_by(desc(GuestbookEntry.post_time)).page(page, pagesize=10)
 
     total_posts = GuestbookEntry.select().count()
-    remaining_pages = (page * 25) < total_posts
+    has_more_pages = (page * 10) < total_posts
+    print(f"{page} {has_more_pages} {total_posts}")
 
     return render_template('guestbook.html', 
                            form=form, 
+                           form_errors=form_errors,
                            page=page, 
-                           remaining_pages=remaining_pages, 
+                           has_more_pages=has_more_pages, 
                            posts=posts)
