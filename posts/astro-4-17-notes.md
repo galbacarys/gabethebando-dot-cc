@@ -1,6 +1,6 @@
 ---
 title: 'Astrophotography Session: 4-17-26, Shawnee State Park' 
-date: 04/19/2026 
+date: 04/20/2026 
 ---
 
 I am often guilty of trying to change too much at once whenever I'm doing

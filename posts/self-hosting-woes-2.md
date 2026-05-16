@@ -26,10 +26,10 @@ counter data.
 
 ## Why we subject ourselves to this shit
 
-A lot of folks on the indie web, very reasonably, use web hosts like neocities,
-etc. to host their shit, and very reasonably. They use other peoples' guestbook
-services and whatnots to add dynamicity to their sites. And they are happy and
-productive and make beautiful things, far more beautiful than I could ever make.
+A lot of folks on the indie web use web hosts like neocities, etc. to host their
+shit, and very reasonably. They use other peoples' guestbook services and
+whatnots to add dynamicity to their sites. And they are happy and productive and
+make beautiful things, far more beautiful than I could ever make.
 
 And instead of all of that, I host all my shit on one creaky digitalocean box
 that I hand-maintain. Its raw IP address is just...there. You could try to SSH
