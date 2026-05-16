@@ -68,4 +68,5 @@ easy solution, but I don't know what to do next to fix it.
 
 Setup time was a pain in the ass - my not realizing that calibration of guiding
 needs to happen as far away from the meridian as possible, and as soon after
-polar alignment as possible, was a big time sink. I also need to figure out 
+polar alignment as possible, was a big time sink. I also need to figure out how
+to make bulb mode work. My next goal is 1 minute exposures!
