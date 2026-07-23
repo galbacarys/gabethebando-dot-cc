@@ -3,8 +3,9 @@ title: About
 titlebar: true
 ---
 
-Hi, my name is Gabe, AKA Bando. I am a software engineer at Netflix working
-on the Games for TV platform. All views are my own, no warranty is implied, etc.
+Hi, my name is Gabe, AKA Bando. I am a software engineer ~~at Netflix working
+on the Games for TV platform~~ who is currently looking for a gig. All views 
+are my own, no warranty is implied, etc.
 
 I love video games, especially puzzle games, and pottery and astrophotography.
 Man, what a weird set of hobbies.
