@@ -26,7 +26,7 @@ class Pages:
                 slug_override = str(metadata.get("slug_override", ""))
                 content = post.content
                 html_content = markdown(
-                    content, extensions=["fenced_code", "tables", "footnotes"]
+                    content, extensions=["fenced_code", "tables", "footnotes", "pymdownx.tilde"]
                 )
                 new_page = Page(
                     title=title,

@@ -13,6 +13,7 @@ dependencies = [
     "gunicorn>=25.2.0",
     "markdown>=3.10.2",
     "pony>=0.7.19",
+    "pymdown-extensions>=11.0.1",
     "python-dateutil>=2.9.0.post0",
     "python-frontmatter>=1.1.0",
     "requests>=2.33.1",
