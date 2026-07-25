@@ -26,7 +26,7 @@ class Blog:
                 draft = bool(metadata.get("draft", False))
                 content = post.content
                 html_content = markdown(
-                    content, extensions=["fenced_code", "tables", "footnotes"]
+                    content, extensions=["fenced_code", "tables", "footnotes", "pymdownx.tilde"]
                 )
                 new_post = BlogPost(
                     title=title, date=date, draft=draft, content=content, html_content=html_content
