@@ -89,7 +89,7 @@ will be sung again. And again. And again.
 
 The audience participates in the diegesis of the cyclical nature of the story;
 Broadway fans, notoriously obsessive over their favorite shows, will listen to
-the ~~soundtrack~~cast recording[^2], all thirty-three songs, over and over and
+the ~~soundtrack~~ _cast recording_[^2], all thirty-three songs, over and over and
 over again. Each time, they will hear the story of Orpheus and Eurydice meeting
 in the darkness of winter, the arrival of Persephone along with her summer
 wine, the descent into a brutal winter, and the death of Orpheus's love. Hades
