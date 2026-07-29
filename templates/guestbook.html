@@ -28,7 +28,7 @@ see your post up right away that's why.
 
 {% for post in posts | sort(attribute="post_time", reverse=True) %}
 <p>
-	At {{ post.post_time.isoformat() }}, <b>{{ post.poster }}</b> said: {{ post.post }}
+	At {{ post.post_time.isoformat(timespec='minutes') }}, <b>{{ post.poster }}</b> said: {{ post.post }}
 </p>
 {% endfor %}
 <p>
