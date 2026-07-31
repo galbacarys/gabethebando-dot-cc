@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+		<script defer src="https://cloud.umami.is/script.js" data-website-id="0c723a63-f1bd-42f8-a4a9-d548086a6348"></script>
 		<title>The Blog of the Bando: {% block pagetitle %}{% endblock %}</title>
 		{% block head %}
 		{% endblock %}
@@ -32,7 +33,7 @@
 					<a href="https://hotlinewebring.club/gabethebando/next">&gt;</a>
 				</div>
 				<div>
-					Copyright 2026-forever gabethebando | This page has been viewed {{ view_count }} times
+					Copyright 2026-forever gabethebando | This page has been viewed {{ format(view_count, ",") }} times
 				</div>
 				<div style="display: flex">
 					<span>
