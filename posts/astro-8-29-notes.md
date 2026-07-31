@@ -29,7 +29,7 @@ extrapolate backwards to the age of our galaxy, and our Universe as a whole.
 
 - 85x60s exposures (85 mins total/120 minutes captured - 35 minutes of data
   discarded due to focus issues 🫠)
-- Stacked in Siril, stretched with GraXPert
+- Stacked in Siril, stretched and de-noised with GraXPert
 - Denoising, photometric color calibration and desaturation applied
 - Canon 60d (unmodified), Canon EF 100-400L Lens at 400mm, f/6.3, clip-in light
   pollution filter in front of camera sensor
