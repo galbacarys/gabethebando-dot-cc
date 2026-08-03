@@ -5,7 +5,7 @@ from pages import Pages
 from blog import Blog
 from models import counter, post_init
 
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, redirect
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from time import sleep
@@ -66,6 +66,10 @@ def page(slug):
     if not page:
         raise NotFound()
     return render_template("page.html", page=page)
+
+@app.route("/resume")
+def resume():
+    return redirect('https://gabethebando-assets.nyc3.cdn.digitaloceanspaces.com/Resume-26.pdf')
 
 
 @app.route("/<path:path>")
