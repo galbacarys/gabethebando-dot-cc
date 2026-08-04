@@ -1,6 +1,6 @@
 ---
-title: "Astrophotography, 8-29-26: M92, The Hercules Cluster"
-date: 08-31-2026
+title: "Astrophotography, 7-29-26: M92, The Hercules Cluster"
+date: 07-31-2026
 ---
 
 ![M92, the Globular cluster in Hercules](https://gabethebando-assets.nyc3.cdn.digitaloceanspaces.com/m92-cincy-7-29.jpg)
